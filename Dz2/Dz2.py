@@ -27,6 +27,8 @@ while second_clue != first_guessed_number * second_guessed_number:
     second_guessed_number += 1
 
 if first_number > second_number:
-    print(f"Первое задуманное число: {second_guessed_number}, Второе задуманное число: {first_guessed_number}")
+    print(f"Первое задуманное число: {second_guessed_number}, \
+    Второе задуманное число: {first_guessed_number}")
 else:
-    print(f"Первое задуманное число: {first_guessed_number}, Второе задуманное число: {second_guessed_number}")
+    print(f"Первое задуманное число: {first_guessed_number}, \
+    Второе задуманное число: {second_guessed_number}")

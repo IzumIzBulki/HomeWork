@@ -20,45 +20,36 @@
 #     Будем считать, что на вход подается только одно слово, которое содержит либо
 #     только английские, либо только русские буквы.
 
+import copy
 
-
-list_1 = [{"1": "AEIOULNSTR"},{"2": "DG"},{"3": "BCMP"},{"4": "FHVWY"},
+En_library = [{"1": "AIEOULNSTR"},{"2": "DG"},{"3": "BCMP"},{"4": "FHVWY"},
             {"5": "K"},{"8": "JX"},{"10": "QZ"}]
-list_2 = [{"1": "АВЕИНОРСТ"},{"2": "ДКЛМПУ"},{"3": "БГЁЬЯ"},{"4": "ЙЫ"},
+Ru_library = [{"1": "АВЕИНОРСТ"},{"2": "ДКЛМПУ"},{"3": "БГЁЬЯ"},{"4": "ЙЫ"},
             {"5": "ЖЗХЦЧ"},{"8": "ШЭЮ"},{"10": "ФЩЪ"}]
-list_3 = input("Введите слово: ").upper()
+word = input("Введите слово: ").upper()
 summ = 0
+count = 0
 
-if 65 <= ord(list_3[0]) <= 90:
-    for item in list_1: 
-        for key in item:                       
-            for letter in item[key]:
-                for list in list_3:
+if 65 <= ord(word[0]) <= 90:
+    for list in word: # перебираю каждую букву введенного слова
+        for item in En_library: # перебираю словари в библиотеке
+            if summ != count:  # прерывает поиск букв, если найдено одно совпадение, уменьшает количество итераций и работы(не проверяет ненужные буквы)
+                    count = copy.copy(summ)
+                    break
+            for key in item: # перебираю словари по ключам
+                for letter in item[key]:  # перебираю буквы в словарях
                     if list == letter:
                         summ += int(key)
+                        break 
 else:
-    for item in list_2:                        
-        for key in item:                       
-            for letter in item[key]:
-                for list in list_3:
+    for list in word: # перебираю каждую букву введенного слова
+        for item in Ru_library:   # перебираю словари в библиотеке 
+            if summ != count:  # прерывает поиск букв, если найдено одно совпадение, уменьшает количество итераций и работы(не проверяет ненужные буквы)
+                    count = copy.copy(summ)
+                    break                    
+            for key in item:        # перебираю словари по ключам               
+                for letter in item[key]: # перебираю буквы в словарях
                     if list == letter:
                         summ += int(key)
+                        break
 print(f"сумма букв = {summ}")
-
-
-
-
-
-
-
-
-
-#пробежали по ключам
-#пробежали по словарям
- # print(item)
-            # print(item[key])
-            # print(key)
-            # a = item[key]
-        
-#         list_3.add(key.strip())            #отобрали ключи                       #strip удаляет пробелы
-#         list_3.add(item[key].strip())      #отобрали значения                    #strip удаляет пробелы

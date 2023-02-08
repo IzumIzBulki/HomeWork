@@ -8,47 +8,17 @@
 # 3 6 9 12 15 18
 # 6 12
 
-string1 = '1 2 33 32 2 1 5 66'
-string2 = '4 5 66 6 43 3 1 2'
-my_list1 = string1.split()    #перевести в список и разделить пробелами, split()разделяет по умолчанию пробелами или тем, что указать в ()
-my_list2 = string2.split()
-new_list1 = set(my_list1)
-new_list2 = set(my_list2)
-my_dict1 = {} #пустой словарь
-new_list4 = []
-for letter in new_list1:
-    my_dict1[letter] = my_dict1.get(letter, 0) + 1
-for letter in new_list2:   
-    my_dict1[letter] = my_dict1.get(letter, 0) + 1
-for letter in my_dict1:
-    if my_dict1[letter] > 1:
-        new_list4.append(letter)
-print(new_list4)  
-
-
-
-
-
-
-
-
-
-# my_dict1 = {} #пустой словарь
-# my_dict2 = {} #пустой словарь
-# new_list1 = [] #пустая строка
-# new_list2 = [] #пустая строка
-
-# for letter in my_list1:
-#     my_dict1[letter] = my_dict1.get(letter, 0) + 1
-# for letter in my_list2:   
-#     my_dict2[letter] = my_dict2.get(letter, 0) + 1
-# for letter in my_dict1:
-#     new_list1.append(letter)
-# for letter in my_dict2:
-#     new_list2.append(letter)
-
-# print(my_list3)  
-# print(my_list1)
-# print(my_dict1) 
-# print(new_list1) 
-
+ferst_numbers = input("Введите первый набор чисел через пробел: ")
+second_numbers = input("Введите второй набор чисел через пробел: ")
+ferst_list = set(ferst_numbers.split())   
+second_list = set(second_numbers.split())
+dictionary = {} 
+final_list = []
+for letter in ferst_list:
+    dictionary[letter] = dictionary.get(letter, 0) + 1
+for letter in second_list:   
+    dictionary[letter] = dictionary.get(letter, 0) + 1
+for letter in dictionary:
+    if dictionary[letter] > 1:
+        final_list.append(letter)
+print("Совпадений нет" if len(final_list) == 0 else f'Список [{" ".join(final_list)}]')  

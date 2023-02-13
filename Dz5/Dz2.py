@@ -9,4 +9,4 @@ def sum_numbers(sum, second_number):
 sum = int(input("Введите число А: "))
 second_number = int(input("Введите число В: "))
 
-print(sum_numbers(sum, second_number))
+print(f'сумма числа {sum} и {second_number} = {sum_numbers(sum, second_number)}')

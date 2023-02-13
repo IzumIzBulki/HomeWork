@@ -4,7 +4,7 @@
 def sum(number, rank, product):
     if rank == 0:
         return product 
-    return sum(number, rank=rank-1, product=product*number)
+    return sum(number, rank-1, product*number)
 
 number = int(input("Введите число: "))
 rank = int(input("Введите степень: "))

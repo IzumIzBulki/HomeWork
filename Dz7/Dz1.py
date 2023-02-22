@@ -11,12 +11,13 @@
 # ; Вывод: Парам пам-пам
 
 
-poesy = "пара-ра-рам рам-пам-папам па-ра-па-да".split()
+poesy = input("Введите фразы через пробел, слова во фразе разделите - : ").split()
 vowels = []
 for phrase in poesy:
     count = 0
     for letter in phrase:
         if letter in ["а","я","у","ю","о","е","ё","э","ы","и"]:
             count +=1
-    vowels.append(count)
+    if count > 0:
+        vowels.append(count)
 print("Парам пам-пам" if len(set(vowels)) == 1 else "Пам парам")

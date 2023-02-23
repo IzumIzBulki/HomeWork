@@ -1,3 +1,3 @@
-import main as c
+import main as m
 
-c.start()
+m.start()

@@ -5,7 +5,7 @@ import configuration as conf
 def start():
     conf.menu()
     item_menu = int(input("\nВыберите пункт меню: "))
-    while item_menu != 9:
+    while item_menu != 0:
         conf.treatment(item_menu)
         conf.menu()
         item_menu = int(input("\nВыберите пункт меню: "))

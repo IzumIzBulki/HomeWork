@@ -1,81 +1,70 @@
-
-
+import os
 
 def menu():
-    print("1: Открыть книгу")
-    print("2: Сохранить файл")
-    print("3: Показать контакты")
-    print("4: Добавить контакт")
-    print("5: Изменить контакт")
-    print("6: Найти контакт")
-    print("7: Удалить контакт")
-    print("8: Создать новый файл")
-    print("9: Выход")
+    # print("\n1: Показать контакты")
+    # print("2: Добавить контакт")
+    print("3: Изменить контакт")
+    # print("4: Найти контакт")
+    # print("5: Удалить контакт")
+    print("0: Выход")
    
 def treatment(number):
     if number == 1:
-        print("\nВы перешли в Открыть книгу")
+        print("\nВы перешли в меню Показать контакты")
         open_book()
     elif number == 2:
-        print("\nВы перешли в Сохранить файл")
-    elif number == 3:
-        print("\n3: Показать контакты")
-    elif number == 4:
         print("\nВы перешли в меню Добавить контакт")
         add_in_book()
-    elif number == 5:
+    elif number == 3:
         print("\nВы перешли в Изменить контакт")
-    elif number == 6:
+    elif number == 4:
         print("\nВы перешли в Найти контакт")
         search()
-    elif number == 7:
+    elif number == 5:
         print("\nВы перешли в Удалить контакт")
         deleted()
-    else: 
-        number == 8
-        print("\nВы перешли в Создать новый файл")
-  
-# удаление контакта
+
+# Удалить контакт
 def deleted():
     item_menu = input("Выберите фамилию или номер телефона которую желаете удалить: ")
-    data = open('book.txt', 'r')
-    for line in data:
-        line = line.split()
-        if line[0] == item_menu:
-            print(f"Контакт [ {' '.join(line)} ] удален")
-            line.clear()
-        elif line[-1] == item_menu:
-            print(f"Контакт {' '.join(line)} удален")
-            line.clear()
-    print()
-    data.close()
+    with open("book.txt", encoding="utf-8") as in_file, open("output.txt", "w", encoding="utf-8") as out_file:
+        for line in in_file:
+            line = line.split()
+            if line[0] == item_menu:
+                print(f"Контакт [ {' '.join(line)} ] удален")
+            elif line[-1] == item_menu:
+                print(f"Контакт [ {' '.join(line)} ] удален")
+            else:
+                out_file.write(f"{' '.join(line)}\n")
+    os.remove("book.txt")
+    os.rename("output.txt", "book.txt")
 
-# поиск контакта
+# Найти контакт
 def search():
     item_menu = input("Выберите фамилию или номер телефона: ")
-    path = 'book.txt'
-    data = open(path, 'r')
+    book = 'book.txt'
+    data = open(book, 'r', encoding="utf-8")
     for line in data:
         line = line.split()
         if line[0] == item_menu:
             print(' '.join(line))
-        if line[2] == item_menu:
+        if line[-1] == item_menu:
             print(' '.join(line))
     data.close()
 
-# запись в файл
+# Добавить контакт
 def add_in_book():
-    colors1 = input("Введи фамилию: ")
-    colors2 = input("Введи номер: ")
-    data = open('book.txt', 'a')
-    data.write(f'{colors1} |')
-    data.write(f" {colors2} \n")
-    print("Контакт успешно добавлен \n")
+    surname = input("Введи фамилию: ")
+    numbers = input("Введи номер: ")
+    data = open('book.txt', 'a', encoding="utf-8")
+    data.write(f'\n{surname}\t|\t')
+    data.write(f"{numbers}")
+    print("Контакт успешно добавлен")
 
-# чтение из файла
+# Показать контакты
 def open_book():
-    path = 'book.txt'
-    data = open(path, 'r')
+    book = 'book.txt'
+    data = open(book, 'r', encoding="utf-8")
     for line in data:
         print(line)
     data.close()
